@@ -1,0 +1,11 @@
+name: Build and check
+on: push
+jobs:
+  build_and_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ls -la
+      - run: make --directory=${{ github.workspace }} setup
+      - run: make --directory=${{ github.workspace }} test
+      - run: make --directory=${{ github.workspace }} lint
